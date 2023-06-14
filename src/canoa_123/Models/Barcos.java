@@ -6,6 +6,7 @@ package canoa_123.Models;
 
 import canoa_123.Controllers.DAO.BarcoDAO;
 import canoa_123.Controllers.DAO.ExceptionDAO;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +16,10 @@ public class Barcos {
     private int id;
     private String nome;
     private int capacidade;
+    
+    public Barcos(){
+    
+    }
             
     public int getId() {
         return id;
@@ -47,6 +52,10 @@ public class Barcos {
     
     public void cadastrarBarco(Barcos barco) throws ExceptionDAO{
         new BarcoDAO().cadastrarBarco(barco);
+    }
+    
+    public ArrayList<Barcos> listarBarcos (String nome) throws ExceptionDAO{
+        return new BarcoDAO().listarBarcos(nome);
     }
   
     

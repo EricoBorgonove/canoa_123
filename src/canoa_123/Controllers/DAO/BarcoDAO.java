@@ -11,9 +11,11 @@ package canoa_123.Controllers.DAO;
 
 import canoa_123.Controllers.DAO.ExceptionDAO;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import canoa_123.Models.Barcos;
+import java.util.ArrayList;
         
     
 public class BarcoDAO {
@@ -41,7 +43,47 @@ public class BarcoDAO {
             throw new ExceptionDAO ("erro ao fechar conn " + e);
         }
         }
-        }
-           
     }
+    
+    public ArrayList<Barcos> listarBarcos (String nome) throws ExceptionDAO{
+        String sql = "select * from barco where nome like '%" + nome + "%' order by nome";
+        
+        PreparedStatement psta = null;
+        Connection conn = null;
+        ArrayList<Barcos> barcos = null;
+        
+        try{
+            conn = new  ConnectionMVC().getConnection();
+            psta = conn.prepareStatement(sql);
+            ResultSet rs = psta.executeQuery(sql);
+            
+            if (rs != null){
+                barcos = new ArrayList<Barcos>();
+                while (rs.next()){
+                Barcos barco = new Barcos();
+                barco.setId(rs.getInt("id"));
+                barco.setNome(rs.getString("nome"));
+                barco.setCapacidade(rs.getInt("capacidade"));
+                barcos.add(barco);
+                }
+            }
+            
 
+            }catch(SQLException e){
+            throw new ExceptionDAO ("erro " + e);
+            }finally{
+                    try{
+                            if (psta != null){psta.close();}   
+              
+            }catch (SQLException e){
+                throw new ExceptionDAO ("erro ao fechar psta " + e);
+        } try {
+            if (conn != null){ conn.close();}
+        } catch (SQLException e){
+            throw new ExceptionDAO ("erro ao fechar conn " + e);
+        }
+        }
+        
+           return barcos;
+    }
+}

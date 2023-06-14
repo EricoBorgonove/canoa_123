@@ -5,7 +5,9 @@
 package canoa_123.Controllers;
 
 import canoa_123.Controllers.DAO.ExceptionDAO;
+import canoa_123.Controllers.DAO.BarcoDAO;
 import canoa_123.Models.Barcos;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,5 +25,8 @@ public class BarcosController {
         }           
     
 }
+    public ArrayList<Barcos> listarBarcos (String nome) throws ExceptionDAO{
+        return new Barcos().listarBarcos(nome);
+    }
     
 }
