@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/erico/NetBeansProjects/canoa_123/src/canoa_123/Controllers/DAO/ConnectionMVC.java</file>
             <file>file:/home/erico/NetBeansProjects/canoa_123/src/canoa_123/views/TelaConsultaBarcos.java</file>
-            <file>file:/home/erico/NetBeansProjects/canoa_123/src/canoa_123/Controllers/DAO/BarcoDAO.java</file>
             <file>file:/home/erico/NetBeansProjects/canoa_123/src/canoa_123/Models/Barcos.java</file>
-            <file>file:/home/erico/NetBeansProjects/canoa_123/src/canoa_123/views/Tela_Principal.java</file>
+            <file>file:/home/erico/NetBeansProjects/canoa_123/src/canoa_123/views/TelaCadastrarBarcos.java</file>
+            <file>file:/home/erico/NetBeansProjects/canoa_123/src/canoa_123/Controllers/DAO/BarcoDAO.java</file>
             <file>file:/home/erico/NetBeansProjects/canoa_123/src/canoa_123/Controllers/BarcosController.java</file>
         </group>
     </open-files>

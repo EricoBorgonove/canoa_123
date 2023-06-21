@@ -26,7 +26,7 @@ public class ConnectionMVC  {
                 
     }
     try{
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/canoa123", "root", "Senha123@");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/canoa123?useSSL=false", "root", "Senha123@");
     }catch (SQLException e){
         e.printStackTrace();
     }

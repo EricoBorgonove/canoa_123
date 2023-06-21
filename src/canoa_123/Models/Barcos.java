@@ -54,6 +54,10 @@ public class Barcos {
         new BarcoDAO().cadastrarBarco(barco);
     }
     
+        public void alterarBarco(Barcos barco) throws ExceptionDAO{
+        new BarcoDAO().alterarBarco(barco);
+    }
+    
     public ArrayList<Barcos> listarBarcos (String nome) throws ExceptionDAO{
         return new BarcoDAO().listarBarcos(nome);
     }

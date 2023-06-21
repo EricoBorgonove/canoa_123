@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -10,18 +10,20 @@ import canoa_123.Models.Barcos;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.util.ArrayList;
+import java.lang.Integer;
 
 /**
  *
  * @author erico
  */
 public class TelaConsultaBarcos extends javax.swing.JFrame {
-
+          TelaCadastrarBarcos telacadastrarbarcos = new TelaCadastrarBarcos();
     /**
      * Creates new form TelaConsultaBarcos
      */
+    
     public TelaConsultaBarcos() {
-        initComponents();
+        initComponents(); 
     }
 
     /**
@@ -83,6 +85,11 @@ public class TelaConsultaBarcos extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tblBarcos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblBarcosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblBarcos);
@@ -150,6 +157,18 @@ public class TelaConsultaBarcos extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void tblBarcosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBarcosMouseClicked
+        if (evt.getClickCount() ==2){
+
+            Integer barcoId = (Integer) tblBarcos.getModel().getValueAt(tblBarcos.getSelectedRow(),0);
+            String nome = (String) tblBarcos.getModel().getValueAt(tblBarcos.getSelectedRow(),1);
+            Integer capacidade = (Integer) tblBarcos.getModel().getValueAt(tblBarcos.getSelectedRow(),2);
+            this.telacadastrarbarcos.buscarBarco(barcoId, nome, capacidade);
+            this.telacadastrarbarcos.setVisible(true);
+            this.dispose();
+        } 
+    }//GEN-LAST:event_tblBarcosMouseClicked
 
     /**
      * @param args the command line arguments

@@ -25,6 +25,17 @@ public class BarcosController {
         }           
     
 }
+        public boolean alterarBarco (int barcoId, String nome, int capacidade) throws ExceptionDAO{
+        if (nome !=null && nome.length()>0 && capacidade != 0 && capacidade>0){
+                 Barcos barco = new Barcos(nome, capacidade);
+                 barco.setId(barcoId);
+                 barco.alterarBarco(barco);
+                 return true;
+        } else{
+           return false;
+        }           
+    
+}
     public ArrayList<Barcos> listarBarcos (String nome) throws ExceptionDAO{
         return new Barcos().listarBarcos(nome);
     }

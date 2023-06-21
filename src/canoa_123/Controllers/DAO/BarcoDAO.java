@@ -45,6 +45,33 @@ public class BarcoDAO {
         }
     }
     
+    public void alterarBarco (Barcos barco) throws ExceptionDAO{
+        String sql = "update barco set nome = ?, capacidade = ? where id = ?";
+        PreparedStatement psta = null;
+        Connection conn = null;
+        try{
+            conn = new  ConnectionMVC().getConnection();
+            psta = conn.prepareStatement(sql);
+            psta.setString(1, barco.getNome());
+            psta.setInt(2, barco.getCapacidade());
+            psta.setInt(3, barco.getId());
+            psta.execute();
+        }catch(SQLException e){
+            throw new ExceptionDAO ("erro " + e);
+        }finally{
+            try{
+              if (psta != null){psta.close();}   
+              
+            }catch (SQLException e){
+                throw new ExceptionDAO ("erro ao fechar psta " + e);
+        } try {
+            if (conn != null){ conn.close();}
+        } catch (SQLException e){
+            throw new ExceptionDAO ("erro ao fechar conn " + e);
+        }
+        }
+    }
+    
     public ArrayList<Barcos> listarBarcos (String nome) throws ExceptionDAO{
         String sql = "select * from barco where nome like '%" + nome + "%' order by nome";
         

@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
  * @author erico
  */
 public class TelaCadastrarBarcos extends javax.swing.JFrame {
+    Integer barcoId = 0;
 
     /**
      * Creates new form TelaCadastrarBarcos
@@ -103,6 +104,13 @@ public class TelaCadastrarBarcos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void buscarBarco (Integer barcoId, String nome, Integer capacidade){
+        this.txtNome.setText(nome);
+        this.txtCapacidade.setText(capacidade.toString());
+        this.barcoId = barcoId;
+        
+   
+    }
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
         boolean sucesso;
@@ -111,7 +119,12 @@ public class TelaCadastrarBarcos extends javax.swing.JFrame {
             
         try{
             BarcosController barcoscontroller = new BarcosController();
-            sucesso = barcoscontroller.cadastrarBarco(nome, capacidade);
+            if (this.barcoId ==0){
+                sucesso = barcoscontroller.cadastrarBarco(nome, capacidade);
+            }else{
+                sucesso = barcoscontroller.alterarBarco(barcoId, nome, capacidade);
+            }
+            
             if (sucesso){
                 JOptionPane.showMessageDialog (null, "Cadastrado com Sucesso");
             }else{
